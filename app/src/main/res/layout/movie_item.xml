@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        
+        <variable
+            name="numberFormat"
+            type="com.ttw.githubbrowsersample.utils.CommonFunKt" />
+
+        <variable
+            name="movie"
+            type="com.ttw.githubbrowsersample.vo.Movie" />
+    </data>
+
+    <FrameLayout
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="16dp"
+        android:paddingLeft="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            app:cardBackgroundColor="@color/colorWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="12dp">
+
+            <ImageView
+                android:id="@+id/imgMovie"
+                imageUrl="@{`https://image.tmdb.org/t/p/w500`+movie.poster_path}"
+                android:layout_width="136dp"
+                android:layout_height="210dp"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                tools:src="@drawable/moive" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_gravity="bottom"
+            app:cardCornerRadius="25dp"
+            tools:backgroundTint="@color/colorPrimary">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="146dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/txtMovieTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{movie.title}"
+                    android:textSize="18sp"
+                    tools:text="Survivor" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:singleLine="true"
+                    android:text="@{movie.original_title}"
+                    tools:text="Original title" />
+
+                <RatingBar
+                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:clickable="false"
+                    android:numStars="5"
+                    android:rating="@{movie.popularity}" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@{movie.release_date}"
+                    tools:text="13/4/12" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </FrameLayout>
+</layout>
